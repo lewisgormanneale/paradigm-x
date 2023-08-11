@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <title>Paradigm X</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <script src="index.js"></script>
@@ -9,7 +16,12 @@
     <a-scene>
       <!-- Asset Management -->
       <a-assets>
-        <img id="sky" src="public/sky.jpg" />
+        <img id="sky" src="assets/sky.jpg" />
+        <audio
+          id="bgm"
+          src="assets/music/paradigm-x-usual.mp3"
+          preload="auto"
+        ></audio>
       </a-assets>
 
       <!-- Sky background -->
@@ -82,11 +94,16 @@
         width="3"
         color="#FF5733"
       ></a-box>
-
+      <a-entity
+        sound="src: #bgm; on: click; loop: true;"
+        position="0 10 0"
+        geometry="primitive: box"
+      ></a-entity>
       <!-- Player/Camera -->
       <a-entity id="camera" position="0 1.6 0">
-        <a-camera look-controls wasd-controls></a-camera>
+        <a-camera look-controls wasd-controls>
+          <a-cursor></a-cursor>
+        </a-camera>
       </a-entity>
-    </a-scene>
   </body>
 </html>
