@@ -9,14 +9,19 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
     <title>Paradigm X</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene  physics="debug: true">
       <!-- Asset Management -->
       <a-assets>
-        <img id="sky" src="assets/sky.jpg" />
+        <a-asset-item id="jack-frost-dae" src="assets/models/jack-frost/model.DAE"></a-asset-item>
+        <img id="sky-outer" src="assets/images/sky-street-outer.png" />
+        <img id="sky-inner" src="assets/images/sky-street-inner.png" />
+        <img id="fence" src="assets/images/fence.png" />
+        <img id="characters" src="assets/images/sprites/characters.png">
         <audio
           id="bgm"
           src="assets/music/paradigm-x-usual.mp3"
@@ -25,8 +30,7 @@
       </a-assets>
 
       <!-- Sky background -->
-      <a-sky color="#887877"></a-sky>
-      <a-sky src="#sky" opacity="0.4"></a-sky>
+      <a-sky src="#sky-outer" opacity="0.4" position="0 50 0"></a-sky>
 
       <!-- Ground plane -->
       <a-plane
@@ -34,7 +38,19 @@
         rotation="-90 0 0"
         width="50"
         height="50"
-        color="#575551"
+        color="#3a3a38"
+        static-body
+      ></a-plane>
+
+      <a-plane
+        position="25 1.5 0"
+        rotation="0 90 0"
+        width="50"
+        height="3"
+        color="#3a3a38"
+        material="src: #fence; repeat: 16 1; side: double"
+        transparent="true"
+        static-body
       ></a-plane>
 
       <!-- Buildings -->
@@ -43,67 +59,90 @@
         depth="3"
         height="15"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="-5 3 10"
         depth="3"
         height="18"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="5 3 10"
         depth="3"
         height="16"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="10 3 10"
         depth="3"
         height="14"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="-10 3 -10"
         depth="3"
         height="15"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="-5 3 -10"
         depth="3"
         height="18"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="5 3 -10"
         depth="3"
         height="16"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body
       ></a-box>
       <a-box
         position="10 3 -10"
         depth="3"
         height="14"
         width="3"
-        color="#FF5733"
+        color="#271811"
+        static-body 
       ></a-box>
       <a-entity
         sound="src: #bgm; on: click; loop: true;"
-        position="0 10 0"
+        position="0 5 -10"
         geometry="primitive: box"
-      ></a-entity>
+        dynamic-body>
+        <a-text
+          value="Play Music"
+          align="center"
+          color="#000000"
+          position="0 0 1"></a-text>
+    </a-entity>
+
       <!-- Player/Camera -->
-      <a-entity id="camera" position="0 1.6 0">
-        <a-camera look-controls wasd-controls>
-          <a-cursor></a-cursor>
-        </a-camera>
+      <a-entity id="rig"
+          movement-controls
+          kinematic-body
+          player-collision
+          position="0 1.6 0">
+        <a-entity
+            id="camera"
+            camera
+            position="0 1.6 0"
+            look-controls="pointerLockEnabled: true">
+            <a-cursor></a-cursor>
+        </a-entity>
       </a-entity>
   </body>
 </html>

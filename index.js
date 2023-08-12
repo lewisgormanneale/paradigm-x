@@ -12,3 +12,11 @@ AFRAME.registerComponent("navigate-on-click", {
     });
   },
 });
+
+AFRAME.registerComponent("player-collision", {
+  init: function () {
+    this.el.addEventListener("collide", function (e) {
+      console.log("Player has collided with ", e.detail.body.el);
+    });
+  },
+});
