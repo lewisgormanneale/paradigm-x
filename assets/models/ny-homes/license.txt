@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly classical New York City homes
+* source:	https://sketchfab.com/3d-models/low-poly-classical-new-york-city-homes-449d873dcca0409bb73b6b801ff36bed
+* author:	99.Miles (https://sketchfab.com/99.Miles)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly classical New York City homes" (https://sketchfab.com/3d-models/low-poly-classical-new-york-city-homes-449d873dcca0409bb73b6b801ff36bed) by 99.Miles (https://sketchfab.com/99.Miles) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
