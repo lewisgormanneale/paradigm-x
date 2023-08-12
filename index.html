@@ -1,15 +1,188 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <title>Paradigm X</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="index.js"></script>
   </head>
   <body>
-    <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+    <a-scene physics>
+      <!-- Asset Management -->
+      <a-assets>
+        <a-asset-item
+          id="kiosk"
+          src="assets/models/kiosk/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="nyHomes"
+          src="assets/models/ny-homes/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="brickShop"
+          src="assets/models/brick-shop/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="stylizedBuilding"
+          src="assets/models/stylized-building/scene.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="tvStation"
+          src="assets/models/tv-station/scene.gltf"
+        ></a-asset-item>
+        <img id="skyOuter" src="assets/images/sky-street-outer.png" />
+        <img id="fence" src="assets/images/fence.png" />
+        <img id="characters" src="assets/images/sprites/characters.png" />
+        <audio
+          id="bgm"
+          src="assets/music/paradigm-x-usual.mp3"
+          preload="auto"
+        ></audio>
+      </a-assets>
+
+      <!-- Sky background -->
+      <a-sky src="#skyOuter" opacity="0.4" position="0 50 0"></a-sky>
+
+      <!-- Ground plane -->
+      <a-plane
+        position="-40 0 0"
+        rotation="-90 0 0"
+        width="120"
+        height="40"
+        color="#3a3a38"
+        static-body
+      ></a-plane>
+
+      <!-- Fence -->
+      <a-plane
+        position="20 1 0"
+        rotation="0 90 0"
+        width="40"
+        height="2.5"
+        color="#3a3a38"
+        material="src: #fence; repeat: 15 0.98; side: double"
+        transparent="true"
+        static-body
+      ></a-plane>
+      <a-plane
+        position="-40 1 20"
+        rotation="0 0 0"
+        width="120"
+        height="2.5"
+        color="#3a3a38"
+        material="src: #fence; repeat: 35 0.98; side: double"
+        transparent="true"
+        static-body
+      ></a-plane>
+      <a-plane
+        position="-100 1 0"
+        rotation="0 90 0"
+        width="40"
+        height="2.5"
+        color="#3a3a38"
+        material="src: #fence; repeat: 15 0.98; side: double"
+        transparent="true"
+        static-body
+      ></a-plane>
+      <a-plane
+        position="-40 1 -20"
+        rotation="0 0 0"
+        width="120"
+        height="2.5"
+        color="#3a3a38"
+        material="src: #fence; repeat: 35 0.98; side: double"
+        transparent="true"
+        static-body
+      ></a-plane>
+
+      <!-- Buildings -->
+
+      <a-entity
+        gltf-model="#kiosk"
+        position="-11 0 -15"
+        scale="1.8 1.8 1.8"
+        rotation="0 0 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="#stylizedBuilding"
+        position="-30 0 -15"
+        scale="1.8 1.8 1.8"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#brickShop"
+        position="-60 -9 13"
+        scale="2 2 2"
+        rotation="180 180 180"
+      ></a-entity>
+
+      <a-entity
+        gltf-model="#tvStation"
+        position="-16 -1 26"
+        scale="2 2 2"
+        rotation="0 180 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="#nyHomes"
+        position="-80 0 0"
+        scale="0.2 0.2 0.2"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- NPCs -->
+
+      <!-- Interactable Objects -->
+      <a-entity
+        sound="src: #bgm; on: click; loop: true;"
+        position="0 5 -10"
+        geometry="primitive: box"
+      >
+        <a-text
+          value="Play Music"
+          align="center"
+          color="#000000"
+          position="0 0 1"
+        ></a-text>
+      </a-entity>
+
+      <!-- Player/Camera -->
+      <a-entity
+        id="rig"
+        movement-controls="constrainToNavMesh: true"
+        player-collision
+        position="0 1.6 0"
+      >
+        <a-entity
+          id="camera"
+          camera
+          position="0 1.6 0"
+          look-controls="pointerLockEnabled: true"
+        >
+          <a-cursor></a-cursor>
+        </a-entity>
+      </a-entity>
     </a-scene>
   </body>
 </html>

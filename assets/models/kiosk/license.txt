@@ -1,0 +1,11 @@
+Model Information:
+* title:	Simple 90's Kiosk
+* source:	https://sketchfab.com/3d-models/simple-90s-kiosk-a04e69a838054f7cb39a635943ab9b0d
+* author:	Vagabondare (https://sketchfab.com/Vagabondare)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Simple 90's Kiosk" (https://sketchfab.com/3d-models/simple-90s-kiosk-a04e69a838054f7cb39a635943ab9b0d) by Vagabondare (https://sketchfab.com/Vagabondare) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
